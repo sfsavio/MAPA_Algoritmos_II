@@ -70,6 +70,6 @@ if (tickets[*count] == NULL) {
 > ```tickets[*count]``` é um **ponteiro** que aponta para a nova estrutura Ingresso alocada.
 > Se a alocação de memória falhar (ou seja, malloc retorna NULL), a função imprime "Erro ao alocar memória!" e retorna.
 
-> [!NOTE]
+> [!NOTE] 
 > ```malloc``` é uma função da biblioteca padrão do C que aloca dinamicamente um bloco de memória durante a execução do programa. O nome **malloc** é uma abreviação de "memory allocation" (alocação de memória).
 > A função ```malloc``` é amplamente usada quando a quantidade de memória necessária não é conhecida em tempo de compilação e precisa ser determinada em tempo de execução. Isso é comum em situações como alocação de arrays de tamanho variável, estruturas de dados dinâmicas, etc.
