@@ -11,21 +11,18 @@ struct Ingresso {
     char id[11];
 };
 
-
-void start_sell(struct Ingresso *tickets[], int *count) {
-      system("cls");
+void iniciar_venda (struct Ingresso *tickets[], int *count) {
+    system("cls");
     if (*count >= MAX) {
         printf("Ingressos esgotados\n");
         return;
     }
-
 
     tickets[*count] = (struct Ingresso *)malloc(sizeof(struct Ingresso));
     if (tickets[*count] == NULL) {
         printf("Erro ao alocar memória!\n");
         return;
     }
-
 
     printf("Nome: ");
     scanf(" %[^\n]s", tickets[*count]->name);
@@ -35,13 +32,13 @@ void start_sell(struct Ingresso *tickets[], int *count) {
 
     printf("CPF: ");
     scanf(" %[^\n]s", tickets[*count]->id);
+    system("cls");
 
     (*count)++;
 
-    printf("Ingresso vendido com sucesso!\n\n");
+    printf("\n\tIngresso vendido com sucesso!\n\n");
     printf("--------------------------------------------------\n");
 }
-
 
 void listar_ingressos(struct Ingresso *tickets[], int count) {
     system("cls");
@@ -51,13 +48,12 @@ void listar_ingressos(struct Ingresso *tickets[], int count) {
     }
 
     for (int i = 0; i < count; i++) {
-        printf("Nome.....................  %s\n", tickets[i]->name);
-        printf("CPF......................  %s\n", tickets[i]->id);
-        printf("Ano de Nascimento........  %s\n", tickets[i]->date);
-        printf("----------------------------------------------------\n");
+        printf("\tNome.....................  %s\n", tickets[i]->name);
+        printf("\tCPF......................  %s\n", tickets[i]->id);
+        printf("\tAno de Nascimento........  %s\n", tickets[i]->date);
+        printf("------------------------------------------------------------------------------\n");
     }
 }
-
 
 void validar_ingresso(struct Ingresso *tickets[], int count) {
     system("cls");
@@ -70,27 +66,28 @@ void validar_ingresso(struct Ingresso *tickets[], int count) {
     char id[11];
     printf("Digite o CPF do ingresso para checar: ");
     scanf(" %[^\n]s", id);
-
+    system("cls");
     for (int i = 0; i < count; i++) {
         if (strcmp(tickets[i]->id, id) == 0) {
-            printf("Ingresso existe em nome de:  %s\n\n\n", tickets[i]->name);
+            printf("\n\tIngresso existe, CPF pertece à:  %s\n\n", tickets[i]->name);
+            printf("------------------------------------------------------------------------------\n");
             return;
         }
     }
 
     printf("Ingresso não encontrado.\n");
+
 }
 
-
-void show_menu(struct Ingresso *tickets[], int *count) {
+void imprimir_menu (struct Ingresso *tickets[], int *count) {
     system("cls");
     int op;
     do {
-        printf(" Menu:\n 1. Vender \n 2. Listar \n 3. Validar \n 4. Sair\n");
+        printf(" | Menu:\n | 1. Vender \n | 2. Listar \n | 3. Validar \n | 4. Sair\n -------------\n");
         scanf("%d", &op);
         switch (op) {
         case 1:
-            start_sell(tickets, count);
+            iniciar_venda(tickets, count);
             break;
         case 2:
             listar_ingressos(tickets, *count);
@@ -99,16 +96,14 @@ void show_menu(struct Ingresso *tickets[], int *count) {
             validar_ingresso(tickets, *count);
             break;
         case 4:
-            printf("Saindo...\n");
+            system("cls");
+            printf("Saindo...\n.\n.\n.\n.\n.");
             break;
         default:
             printf("Selecione uma opção existente!\n");
         }
     } while (op != 4);
-
-
 }
-
 
 int main() {
     setlocale(LC_ALL, "Portuguese");
@@ -116,7 +111,7 @@ int main() {
     struct Ingresso *tickets[MAX];
     int count = 0;
 
-    show_menu(tickets, &count);
+    imprimir_menu(tickets, &count);
 
 
     for (int i = 0; i < count; i++) {
