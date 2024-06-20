@@ -45,4 +45,4 @@ void iniciar_venda(struct Ingresso *tickets[], int *count);
 
 1. Parâmetros
    + struct Ingresso *tickets[]: Array de ponteiros para a estrutura Ingresso. Este array armazena os ponteiros para cada ingresso vendido.
-   + 
+   + *int count: Ponteiro para um inteiro que mantém o número atual de ingressos vendidos. Esse valor é atualizado conforme novos ingressos são vendidos.
