@@ -35,7 +35,7 @@ struct Ingresso {
 
 
 ## Funções implementadas
-#### iniciar_venda ( ) 
+ ```iniciar_venda ( ) ``` <br></br> 
 A função iniciar_venda gerencia a venda de um ingresso no sistema. Ela aloca memória dinamicamente para armazenar as informações do ingresso e utiliza ponteiros para manipular e acessar esses dados de forma eficiente. 
 ```c
 // cabeçalho da função
@@ -44,5 +44,14 @@ void iniciar_venda(struct Ingresso *tickets[], int *count);
 > Recebe o struct e o contador como parâmetros.
 
 1. Parâmetros
-   + struct Ingresso *tickets[]: Array de ponteiros para a estrutura Ingresso. Este array armazena os ponteiros para cada ingresso vendido.
-   + *int count: Ponteiro para um inteiro que mantém o número atual de ingressos vendidos. Esse valor é atualizado conforme novos ingressos são vendidos.
+> ```struct Ingresso *tickets[]```: Array de ponteiros para a estrutura Ingresso. Este array armazena os ponteiros para cada ingresso vendido.
+> ```*int count```: Ponteiro para um inteiro que mantém o número atual de ingressos vendidos. Esse valor é atualizado conforme novos ingressos são vendidos.
+2. Papel da função
+> Verifica se o limite de ingressos já foi atendido.
+```c
+if (*count >= MAX) {
+printf("Ingressos esgotados\n");
+return;
+} 
+```
+> Checa se o limite de ingressos definidos pela ```#define MAX n ``` foi atingido.
