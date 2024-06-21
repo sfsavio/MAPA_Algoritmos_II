@@ -72,4 +72,41 @@ if (tickets[*count] == NULL) {
 
 > [!NOTE] 
 > ```malloc``` é uma função da biblioteca padrão do C que aloca dinamicamente um bloco de memória durante a execução do programa. O nome **malloc** é uma abreviação de "memory allocation" (alocação de memória).
-> A função ```malloc``` é amplamente usada quando a quantidade de memória necessária não é conhecida em tempo de compilação e precisa ser determinada em tempo de execução. Isso é comum em situações como alocação de arrays de tamanho variável, estruturas de dados dinâmicas, etc.
+> A função ```malloc``` é amplamente usada quando a quantidade de memória necessária não é conhecida em tempo de compilação e precisa ser determinada em tempo de execução. Isso é comum em situações como alocação de arrays de tamanho variável, estruturas de dados dinâmicas, etc.<br></br>
+#### Incremento do contador para definir o número de objetos criados
+```c
+(*count)++;
+```
+ ```listar_ingressos ( ) ```  exibir todos os ingressos vendidos <br></br> 
+
+ ```c
+void listar_ingressos(struct Ingresso *tickets[], int count) {
+    system("cls");
+    if (count == 0) {
+        printf("Nenhum ingresso vendido ainda.\n");
+        return;
+        }
+
+    for (int i = 0; i < count; i++) {
+        printf("\tNome.....................  %s\n", tickets[i]->name);
+        printf("\tCPF......................  %s\n", tickets[i]->id);
+        printf("\tAno de Nascimento........  %s\n", tickets[i]->date);
+        printf("------------------------------------------------------------------------------\n");
+        }
+    }
+```
+
+Assinatura da função ```void listar_ingressos(struct Ingresso *tickets[], int count);```
+
+Uso de Ponteiros
+Manipulação de Arrays de Estruturas com Ponteiros
+
+    struct Ingresso *tickets[]: Um array de ponteiros é usado para armazenar os ingressos vendidos. Cada elemento do array tickets é um ponteiro para uma estrutura Ingresso.
+    Isso permite acessar diretamente as informações dos ingressos usando os ponteiros armazenados no array.
+
+Acesso a Campos da Estrutura
+
+    tickets[i]->name: O operador -> é utilizado para acessar os membros da estrutura apontada por tickets[i]. Isso é necessário porque tickets[i] é um ponteiro para uma estrutura Ingresso.
+
+
+```validar_ingresso()```  
