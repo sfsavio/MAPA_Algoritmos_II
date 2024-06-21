@@ -214,3 +214,18 @@ int main() {
 
 >[!TIP]
 > ```setlocale(LC_ALL, "Portuguese")```  configura a localidade para permitir a exibição de caracteres específicos da língua portuguesa, como acentos e cedilha.
+
+### Limpando a memória 
+> ```free()``` é uma função da biblioteca padrão do C que é usada para liberar a memória alocada dinamicamente pelo ```malloc, calloc, ou realloc```. 
+
+### Uso de Ponteiros
+Manipulação de Arrays de Estruturas com Ponteiros
+
+> struct Ingresso *tickets[]: Um array de ponteiros é usado para armazenar os ingressos vendidos. Cada elemento do array tickets é um ponteiro para uma estrutura Ingresso.
+> Isso permite que o programa armazene dinamicamente informações de múltiplos ingressos e acesse diretamente os dados de cada ingresso através dos ponteiros.
+
+### Passagem de Ponteiros para Funções
+
+> &count: O endereço da variável count é passado para a função imprimir_menu, permitindo que essa função modifique diretamente o valor do contador de ingressos vendidos.
+> Ao passar o endereço de count, a função imprimir_menu pode atualizar o contador de ingressos vendidos, refletindo corretamente o número total de ingressos registrados no programa.
+
