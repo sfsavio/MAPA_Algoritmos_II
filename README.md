@@ -14,7 +14,7 @@
 // string.h: Biblioteca para manipulação de strings.
 // locale.h: Biblioteca para permitir a utilização de caracteres especiais.
 ```
-### Constante MAX
+## Constante MAX
 
 ```c
 #define MAX 10
@@ -22,7 +22,7 @@
 // Define o máximo de ingressos a serem vendidos.
 ```
 
-### Declaração da "Struct Ingresso"
+## Declaração da "Struct Ingresso"
 ```c
 struct Ingresso {
     char name[30];
@@ -35,7 +35,7 @@ struct Ingresso {
 
 
 ## Funções implementadas
- ```iniciar_venda ( ) ``` <br></br> 
+### iniciar_venda () <br></br> 
 A função iniciar_venda gerencia a venda de um ingresso no sistema. Ela aloca memória dinamicamente para armazenar as informações do ingresso e utiliza ponteiros para manipular e acessar esses dados de forma eficiente. 
 ```c
 // cabeçalho da função
@@ -77,7 +77,10 @@ if (tickets[*count] == NULL) {
 ```c
 (*count)++;
 ```
- ```listar_ingressos ( ) ```  exibir todos os ingressos vendidos <br></br> 
+<hr></hr>
+
+### listar_ingressos ()  
+> Exibir todos os ingressos vendidos 
 
  ```c
 void listar_ingressos(struct Ingresso *tickets[], int count) {
@@ -108,5 +111,45 @@ Acesso a Campos da Estrutura
 
     tickets[i]->name: O operador -> é utilizado para acessar os membros da estrutura apontada por tickets[i]. Isso é necessário porque tickets[i] é um ponteiro para uma estrutura Ingresso.
 
+<hr></hr>
 
-```validar_ingresso()```  
+### validar_ingresso ()
+> A função ```validar_ingresso()``` verifica se um ingresso com um determinado CPF existe no sistema.
+1. Parâmetros
+```c
+   void validar_ingresso(struct Ingresso *tickets[], int count);
+```
+> struct Ingresso *tickets[]: Array de ponteiros para a estrutura Ingresso. Este array contém os ponteiros para cada ingresso vendido.
+> int count: Número de ingressos vendidos. Este valor é utilizado para controlar a iteração sobre o array de ingressos.
+
+2. Funcionamento
+> A função verifica se há ingressos vendidos verificando se ```count``` é igual a 0.
+
+```c
+void validar_ingresso(struct Ingresso *tickets[], int count) {
+    system("cls");
+    if (count == 0) {
+        printf("Nenhum ingresso vendido ainda.\n");
+        printf("\n");
+        return;
+        }
+
+    char id[11];
+    printf("Digite o CPF do ingresso para checar: ");
+    scanf(" %[^\n]s", id);
+    system("cls");
+    for (int i = 0; i < count; i++) {
+        if (strcmp(tickets[i]->id, id) == 0) {
+            printf("\n\tIngresso existe, CPF pertece à:  %s\n\n", tickets[i]->name);
+            printf("------------------------------------------------------------------------------\n");
+            return;
+            }
+        }
+
+    printf("Ingresso não encontrado.\n");
+
+    }
+```
+>[!NOTE]
+> ```strcmp(tickets[i]->id, id) == 0```: A função ```strcmp``` é usada para comparar duas strings.
+
