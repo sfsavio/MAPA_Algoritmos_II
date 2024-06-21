@@ -153,3 +153,64 @@ void validar_ingresso(struct Ingresso *tickets[], int count) {
 >[!NOTE]
 > ```strcmp(tickets[i]->id, id) == 0```: A função ```strcmp``` é usada para comparar duas strings.
 
+<hr></hr>
+
+### imprimir_menu
+> Essa função realiza a impressão do menu para o usuário e faz a chamada das funções de acordo com a escolha do mesmo.
+
+```c
+void imprimir_menu (struct Ingresso *tickets[], int *count) {
+    system("cls");
+    int op;
+    do {
+        printf(" | Menu:\n | 1. Vender \n | 2. Listar \n | 3. Validar \n | 4. Sair\n -------------\n");
+        scanf("%d", &op);
+        switch (op) {
+            case 1:
+                iniciar_venda(tickets, count);
+                break;
+            case 2:
+                listar_ingressos(tickets, *count);
+                break;
+            case 3:
+                validar_ingresso(tickets, *count);
+                break;
+            case 4:
+                system("cls");
+                printf("Saindo...\n.\n.\n.\n.\n.");
+                break;
+            default:
+                printf("Selecione uma opção existente!\n");
+            }
+        }
+    while (op != 4);
+    }
+
+```
+Parâmetros
+```c
+   void validar_ingresso(struct Ingresso *tickets[], int count);
+```
+
+## Main
+> Ponto de partida do programa.
+```c
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+
+    struct Ingresso *tickets[MAX];
+    int count = 0;
+
+    imprimir_menu(tickets, &count);
+
+    for (int i = 0; i < count; i++) {
+        free(tickets[i]);
+        }
+
+    return 0;
+    }
+
+```
+
+>[!TIP]
+> ```setlocale(LC_ALL, "Portuguese")```  configura a localidade para permitir a exibição de caracteres específicos da língua portuguesa, como acentos e cedilha.
