@@ -3,7 +3,7 @@
 #include <string.h>
 #include <locale.h>
 
-#define MAX 10
+#define MAX 100
 
 struct Ingresso {
     char name[30];
@@ -14,20 +14,22 @@ struct Ingresso {
 void iniciar_venda (struct Ingresso *tickets[], int *count) {
     system("cls");
     if (*count >= MAX) {
-        printf("Ingressos esgotados\n");
+            printf("\n");
+        printf("\tIngressos esgotados!!!\n");
+        printf("\n\n==============================================\n\n");
         return;
     }
 
-    tickets[*count] = (struct Ingresso *)malloc(sizeof(struct Ingresso));
+    tickets[*count] = (struct Ingresso *)malloc(sizeof(struct Ingresso)); // memory allocation
     if (tickets[*count] == NULL) {
-        printf("Erro ao alocar memória!\n");
+        printf("Erro ao alocar novo ingresso na memória!\n");
         return;
     }
 
     printf("Nome: ");
     scanf(" %[^\n]s", tickets[*count]->name);
 
-    printf("Data de nascimento (dd/mm/aa): ");
+    printf("Ano de Nascimento: ");
     scanf(" %[^\n]s", tickets[*count]->date);
 
     printf("CPF: ");
@@ -37,7 +39,7 @@ void iniciar_venda (struct Ingresso *tickets[], int *count) {
     (*count)++;
 
     printf("\n\tIngresso vendido com sucesso!\n\n");
-    printf("--------------------------------------------------\n");
+    printf("\n==============================================\n\n");
 }
 
 void listar_ingressos(struct Ingresso *tickets[], int count) {
@@ -51,7 +53,7 @@ void listar_ingressos(struct Ingresso *tickets[], int count) {
         printf("\tNome.....................  %s\n", tickets[i]->name);
         printf("\tCPF......................  %s\n", tickets[i]->id);
         printf("\tAno de Nascimento........  %s\n", tickets[i]->date);
-        printf("------------------------------------------------------------------------------\n");
+        printf("\n==============================================\n\n");
     }
 }
 
@@ -70,7 +72,7 @@ void validar_ingresso(struct Ingresso *tickets[], int count) {
     for (int i = 0; i < count; i++) {
         if (strcmp(tickets[i]->id, id) == 0) {
             printf("\n\tIngresso existe, CPF pertece à:  %s\n\n", tickets[i]->name);
-            printf("------------------------------------------------------------------------------\n");
+            printf("\n==============================================\n\n");
             return;
         }
     }
@@ -83,7 +85,7 @@ void imprimir_menu (struct Ingresso *tickets[], int *count) {
     system("cls");
     int op;
     do {
-        printf(" | Menu:\n | 1. Vender \n | 2. Listar \n | 3. Validar \n | 4. Sair\n -------------\n");
+        printf(" | Menu:\n | 1. Vender \n | 2. Listar \n | 3. Validar \n | 4. Sair\n -------------\n --> ");
         scanf("%d", &op);
         switch (op) {
         case 1:
